@@ -20,4 +20,19 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "AndroidOTChallenge"
-include ':app'
+includeAllGradleProjectsInCurrentDirectoryTree()
+
+/* Utility methods */
+
+private List<String> includeAllGradleProjectsInCurrentDirectoryTree() {
+    getAllBuildGradleFilesInCurrectDirectoryTree()
+            .collect { relativePath(it.parent).replace(File.separator, ':') }
+            .each { include(it) }
+}
+
+private ConfigurableFileTree getAllBuildGradleFilesInCurrectDirectoryTree() {
+    fileTree('.') {
+        include '**/build.gradle'
+        exclude 'build.gradle' // Exclude the root build file.
+    }
+}

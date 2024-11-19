@@ -1,26 +1,14 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.kapt)
 }
 
 android {
-    namespace 'com.example.otchallenge'
-
-    defaultConfig {
-        applicationId "com.example.otchallenge"
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
+    namespace 'com.example.otchallenge.bookslist'
 }
 
 dependencies {
-    implementation project(":feature:books-list")
 
     implementation libs.androidx.core.ktx
     implementation libs.androidx.appcompat
@@ -33,15 +21,9 @@ dependencies {
 
     //retrofit
     implementation libs.retrofit
-    implementation libs.retrofit.rx.adapter
 
     //glide
     implementation libs.glide
-
-    //reactive x
-    implementation libs.rx.android
-    implementation libs.rx.java
-    implementation libs.rx.kotlin
 
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit
