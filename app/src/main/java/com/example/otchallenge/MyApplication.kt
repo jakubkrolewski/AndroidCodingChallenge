@@ -1,9 +1,9 @@
 package com.example.otchallenge
 
 import android.app.Application
-import com.example.otchallenge.base.api.dagger.AppComponent
-import com.example.otchallenge.base.api.dagger.DaggerAppComponent
-import com.example.otchallenge.base.api.dagger.HasAppComponent
+import com.example.otchallenge.base.api.di.AppComponent
+import com.example.otchallenge.base.api.di.DaggerAppComponent
+import com.example.otchallenge.base.api.di.HasAppComponent
 
 class MyApplication : Application(), HasAppComponent {
 
