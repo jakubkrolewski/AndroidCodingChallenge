@@ -20,6 +20,7 @@ android {
 }
 
 dependencies {
+    implementation project(":component:base")
     implementation project(":feature:books-list")
 
     implementation libs.androidx.core.ktx

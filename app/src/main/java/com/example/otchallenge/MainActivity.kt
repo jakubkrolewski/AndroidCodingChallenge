@@ -14,7 +14,6 @@ class MainActivity : AppCompatActivity() {
 	private lateinit var navController: NavController
 
 	override fun onCreate(savedInstanceState: Bundle?) {
-		(application as MyApplication).appComponent.inject(this)
 		super.onCreate(savedInstanceState)
 		enableEdgeToEdge()
 		setContentView(R.layout.activity_main)
