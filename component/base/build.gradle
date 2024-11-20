@@ -1,0 +1,19 @@
+plugins {
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.kapt)
+}
+
+android {
+    namespace 'com.example.otchallenge.base'
+}
+
+dependencies {
+    // dagger
+    implementation libs.dagger
+    kapt libs.dagger.compiler
+
+    //retrofit
+    implementation libs.retrofit
+    implementation libs.retrofit.converter.moshi
+}
