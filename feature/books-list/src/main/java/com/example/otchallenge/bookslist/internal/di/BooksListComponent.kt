@@ -1,20 +1,25 @@
 package com.example.otchallenge.bookslist.internal.di
 
-import com.example.otchallenge.base.api.di.AppComponent
 import com.example.otchallenge.base.api.di.FragmentScope
 import com.example.otchallenge.bookslist.api.BooksListFragment
-import dagger.Component
+import dagger.BindsInstance
 import dagger.Subcomponent
+import kotlinx.coroutines.CoroutineScope
 
 @FragmentScope
-@Component(
-    dependencies = [
-        AppComponent::class,
-    ],
+@Subcomponent(
     modules = [
         BooksListModule::class,
     ]
 )
-internal interface BooksListComponent {
+interface BooksListComponent {
     fun inject(fragment: BooksListFragment)
+
+    @Subcomponent.Builder
+    interface Builder {
+        fun build(): BooksListComponent
+
+        @BindsInstance
+        fun lifecycleScope(lifecycleScope: CoroutineScope): Builder
+    }
 }

@@ -9,6 +9,8 @@ android {
 }
 
 dependencies {
+    api libs.moshi.moshi
+
     // dagger
     implementation libs.dagger
     kapt libs.dagger.compiler

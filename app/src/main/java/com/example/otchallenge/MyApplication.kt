@@ -1,16 +1,23 @@
 package com.example.otchallenge
 
 import android.app.Application
-import com.example.otchallenge.base.api.di.AppComponent
-import com.example.otchallenge.base.api.di.DaggerAppComponent
-import com.example.otchallenge.base.api.di.HasAppComponent
+import com.example.otchallenge.di.AppComponent
+import com.example.otchallenge.bookslist.api.BooksListComponentProvider
+import com.example.otchallenge.bookslist.internal.di.BooksListComponent
+import com.example.otchallenge.di.AppModule
+import com.example.otchallenge.di.DaggerAppComponent
 
-class MyApplication : Application(), HasAppComponent {
+class MyApplication : Application(), BooksListComponentProvider {
 
-	override lateinit var appComponent: AppComponent
+	private lateinit var appComponent: AppComponent
 
 	override fun onCreate() {
 		super.onCreate()
-		appComponent = DaggerAppComponent.builder().build()
+		appComponent = DaggerAppComponent.builder()
+			.appModule(AppModule(this))
+			.build()
 	}
+
+	override fun provideBooksListComponent(): BooksListComponent.Builder =
+		appComponent.booksListComponent()
 }

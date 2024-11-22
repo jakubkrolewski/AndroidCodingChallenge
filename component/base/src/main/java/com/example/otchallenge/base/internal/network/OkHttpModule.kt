@@ -19,24 +19,20 @@ private const val CALL_TIMEOUT_SECONDS = 30L
 internal object OkHttpModule {
 
     @Provides
-    @ElementsIntoSet
-    fun provideDefaultInterceptors(): Set<Interceptor> = emptySet()
-
-    @Provides
     @Singleton
-    fun provideOkHttpClient(
+    fun provideOkHttpClientLazy(
         context: Context,
-        interceptors: Set<@JvmSuppressWildcards Interceptor>
-    ): OkHttpClient {
-        return OkHttpClient.Builder()
-            .apply { interceptors().addAll(interceptors) }
-            .cache(
-                Cache(
-                    File(context.cacheDir, NETWORK_CACHE_FILE_NAME),
-                    NETWORK_CACHE_SIZE_BYTES
+    ): Lazy<OkHttpClient> {
+        return lazy {
+            OkHttpClient.Builder()
+                .cache(
+                    Cache(
+                        File(context.cacheDir, NETWORK_CACHE_FILE_NAME),
+                        NETWORK_CACHE_SIZE_BYTES
+                    )
                 )
-            )
-            .callTimeout(CALL_TIMEOUT_SECONDS, TimeUnit.SECONDS)
-            .build()
+                .callTimeout(CALL_TIMEOUT_SECONDS, TimeUnit.SECONDS)
+                .build()
+        }
     }
 }

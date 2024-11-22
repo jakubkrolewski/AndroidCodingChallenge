@@ -7,9 +7,9 @@ import javax.inject.Inject
 
 @FragmentScope
 internal class BooksListPresenter @Inject constructor(
-//    private val lifecycleScope: CoroutineScope,
+    private val lifecycleScope: CoroutineScope,
     private val getBooksListUseCase: GetBooksListUseCase,
-    ) {
+) {
 
     interface View {
 
