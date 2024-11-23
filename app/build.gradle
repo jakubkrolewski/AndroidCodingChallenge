@@ -17,6 +17,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    buildFeatures {
+        // if it's not enabled on the app module, the app crashes with
+        // ClassNotFoundException: Didn't find class "androidx.databinding.DataBinderMapperImpl
+        dataBinding = true
+    }
 }
 
 dependencies {

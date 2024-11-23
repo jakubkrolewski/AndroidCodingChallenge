@@ -1,29 +1,32 @@
 package com.example.otchallenge.bookslist.internal.ui
 
-import android.view.View
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.otchallenge.bookslist.databinding.BooksListItemBinding
 import com.example.otchallenge.bookslist.internal.repository.Book
-import com.example.otchallenge.bookslist.internal.util.Logger
 import javax.inject.Inject
 
 internal class BooksAdapter @Inject constructor() :
     ListAdapter<Book, BooksAdapter.UserViewHolder>(BaseDiffCallback { isbn10 ?: isbn13 ?: this }) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
-        TODO("Not yet implemented")
+        val binding = BooksListItemBinding
+            .inflate(LayoutInflater.from(parent.context), parent, false)
+
+        return UserViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 
-    internal class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
+    internal class UserViewHolder(private val binding: BooksListItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(book: Book) {
-            // use the model to bind data to the views
-            Logger.d(book.toString())
+            binding.book = book
+            binding.executePendingBindings()
         }
     }
 }
