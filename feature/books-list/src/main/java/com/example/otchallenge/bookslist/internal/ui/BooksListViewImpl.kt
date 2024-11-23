@@ -31,10 +31,13 @@ internal class BooksListViewImpl(
     }
 
     override fun showEmptyView(messageId: Int) {
-        // TODO
+        binding.emptyView.apply {
+            isVisible = true
+            text = context.getString(messageId)
+        }
     }
 
     override fun hideEmptyView() {
-        // TODO
+        binding.emptyView.isVisible = false
     }
 }
