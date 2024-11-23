@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="books_list_photo_content_description">Photo of %1$s</string>
+    <string name="books_list_empty_state_error">Something went wrong :(\nPull to refresh the list content</string>
+    <string name="books_list_empty_state_loading">Please wait…</string>
+    <string name="books_list_empty_state_no_results">The books list is empty</string>
+</resources>

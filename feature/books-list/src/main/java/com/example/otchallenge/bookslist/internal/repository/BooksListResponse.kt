@@ -15,4 +15,8 @@ internal data class Book(
     val description: String?,
     @Json(name = "book_image")
     val imageUrl: String?,
+    @Json(name = "primary_isbn10")
+    val isbn10: String?,
+    @Json(name = "primary_isbn13")
+    val isbn13: String?,
 )

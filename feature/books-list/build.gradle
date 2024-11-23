@@ -6,6 +6,10 @@ plugins {
 
 android {
     namespace 'com.example.otchallenge.bookslist'
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -30,6 +34,7 @@ dependencies {
     implementation libs.moshi.moshi
 
     implementation libs.retrofit
+    implementation libs.timber
 
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit

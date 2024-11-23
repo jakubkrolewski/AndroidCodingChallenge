@@ -42,6 +42,7 @@ rx-java = {group = "io.reactivex.rxjava2", name="rxjava", version.ref = "rx-java
 rx-android = {group = "io.reactivex.rxjava2", name="rxandroid", version.ref = "rx-android"}
 rx-kotlin = {group = "io.reactivex.rxjava2", name="rxkotlin", version.ref = "rx-kotlin"}
 androidx-swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "swiperefreshlayout" }
+timber = { module = "com.jakewharton.timber:timber", version = "5.0.1"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
