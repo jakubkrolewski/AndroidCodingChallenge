@@ -1,0 +1,25 @@
+plugins {
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.kapt)
+}
+
+android {
+    namespace 'com.example.otchallenge.common'
+
+    buildFeatures {
+        dataBinding = true
+    }
+}
+
+dependencies {
+    api libs.androidx.recyclerview
+    api libs.timber
+
+    implementation libs.glide
+    implementation libs.kotlinx.coroutines.core
+
+    testImplementation libs.junit
+    testImplementation libs.kluent
+    testImplementation libs.kotlinx.coroutines.test
+}

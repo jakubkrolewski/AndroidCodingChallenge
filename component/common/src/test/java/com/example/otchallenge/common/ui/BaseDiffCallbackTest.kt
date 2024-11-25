@@ -1,4 +1,4 @@
-package com.example.otchallenge.bookslist.internal.ui
+package com.example.otchallenge.common.ui
 
 import org.amshove.kluent.`should be equal to`
 import org.junit.Test

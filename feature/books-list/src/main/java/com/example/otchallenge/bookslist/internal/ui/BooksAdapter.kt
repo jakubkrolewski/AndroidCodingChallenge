@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.otchallenge.bookslist.databinding.BooksListItemBinding
 import com.example.otchallenge.bookslist.internal.repository.Book
+import com.example.otchallenge.common.ui.BaseDiffCallback
 import javax.inject.Inject
 
 internal class BooksAdapter @Inject constructor() :

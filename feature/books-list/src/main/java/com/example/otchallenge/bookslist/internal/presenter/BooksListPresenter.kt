@@ -5,6 +5,8 @@ import com.example.otchallenge.base.api.di.FragmentScope
 import com.example.otchallenge.bookslist.R
 import com.example.otchallenge.bookslist.internal.repository.Book
 import com.example.otchallenge.bookslist.internal.usecase.GetBooksListUseCase
+import com.example.otchallenge.common.presenter.ViewModelState
+import com.example.otchallenge.common.presenter.fetchDataAsStates
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

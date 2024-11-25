@@ -1,10 +1,9 @@
-package com.example.otchallenge.bookslist.internal.presenter
+package com.example.otchallenge.common.presenter
 
-import com.example.otchallenge.bookslist.internal.util.logNetworkError
+import com.example.otchallenge.common.util.logNetworkError
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-// TODO move to common
 @Suppress("UNCHECKED_CAST")
 sealed class ViewModelState<T> {
 
@@ -23,6 +22,7 @@ private interface CanHaveData<T> {
     val data: T?
 }
 
+// TODO add unit tests
 fun <T> fetchDataAsStates(
     newDataProvider: suspend () -> T,
     actionDescriptionProvider: () -> String,

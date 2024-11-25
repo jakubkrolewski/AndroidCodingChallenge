@@ -1,11 +1,10 @@
-package com.example.otchallenge.bookslist.internal.util
+package com.example.otchallenge.common.util
 
 import timber.log.Timber
 import java.io.IOException
 
 typealias Logger = Timber
 
-// TODO move to common
 fun logNetworkError(throwable: Throwable, actionDescription: () -> String) {
     when (throwable) {
         is IOException -> {
