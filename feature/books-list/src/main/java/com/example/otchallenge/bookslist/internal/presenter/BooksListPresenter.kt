@@ -2,6 +2,7 @@ package com.example.otchallenge.bookslist.internal.presenter
 
 import androidx.annotation.StringRes
 import com.example.otchallenge.base.api.di.FragmentScope
+import com.example.otchallenge.bookslist.R
 import com.example.otchallenge.bookslist.internal.repository.Book
 import com.example.otchallenge.bookslist.internal.usecase.GetBooksListUseCase
 import kotlinx.coroutines.CoroutineScope
@@ -15,7 +16,6 @@ import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import com.example.otchallenge.bookslist.R
 
 internal typealias BooksListState = ViewModelState<List<Book>>
 
@@ -29,7 +29,8 @@ internal class BooksListPresenter @Inject constructor(
 
     private val state: MutableStateFlow<BooksListState> = MutableStateFlow(ViewModelState.InProgress())
 
-    private val loadTriggers = MutableSharedFlow<Unit>(replay = 1, onBufferOverflow = BufferOverflow.DROP_LATEST)
+    private val loadTriggers =
+        MutableSharedFlow<Unit>(replay = 1, onBufferOverflow = BufferOverflow.DROP_LATEST)
 
     init {
         fetchListOnTrigger()
@@ -92,7 +93,7 @@ internal class BooksListPresenter @Inject constructor(
         val booksList = state.successData
         if (booksList.isNullOrEmpty()) {
             view.hideBooksList()
-            val emptyViewMessage = when(state) {
+            val emptyViewMessage = when (state) {
                 is ViewModelState.Error -> R.string.books_list_empty_state_error
                 is ViewModelState.InProgress -> R.string.books_list_empty_state_loading
                 is ViewModelState.Success -> R.string.books_list_empty_state_no_results

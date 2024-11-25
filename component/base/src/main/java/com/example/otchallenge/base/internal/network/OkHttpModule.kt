@@ -3,9 +3,7 @@ package com.example.otchallenge.base.internal.network
 import android.content.Context
 import dagger.Module
 import dagger.Provides
-import dagger.multibindings.ElementsIntoSet
 import okhttp3.Cache
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import java.io.File
 import java.util.concurrent.TimeUnit

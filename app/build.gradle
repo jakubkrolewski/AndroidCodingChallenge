@@ -43,15 +43,6 @@ dependencies {
 
     //retrofit
     implementation libs.retrofit
-    implementation libs.retrofit.rx.adapter
-
-    //glide
-    implementation libs.glide
-
-    //reactive x
-    implementation libs.rx.android
-    implementation libs.rx.java
-    implementation libs.rx.kotlin
 
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit

@@ -11,9 +11,11 @@ fun logNetworkError(throwable: Throwable, actionDescription: () -> String) {
         is IOException -> {
             Logger.w(throwable, "Connection problem")
         }
+
         is Error -> {
             Logger.e(throwable, "Fatal error while performing action: ${actionDescription()}")
         }
+
         else -> {
             Logger.e(throwable, "${actionDescription()} failed")
         }

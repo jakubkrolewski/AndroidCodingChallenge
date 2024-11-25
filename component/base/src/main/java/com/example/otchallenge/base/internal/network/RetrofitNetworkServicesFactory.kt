@@ -1,7 +1,7 @@
 package com.example.otchallenge.base.internal.network
 
-import retrofit2.Retrofit
 import com.example.otchallenge.base.api.network.NetworkServicesFactory
+import retrofit2.Retrofit
 import kotlin.reflect.KClass
 
 internal class RetrofitNetworkServicesFactory(private val retrofit: Retrofit) : NetworkServicesFactory {

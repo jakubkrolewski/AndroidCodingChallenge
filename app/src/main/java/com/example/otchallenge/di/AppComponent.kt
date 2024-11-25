@@ -7,12 +7,12 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(
-	modules = [
-		AppModule::class,
-		BaseModule::class,
-		SubcomponentsModule::class,
-	]
+    modules = [
+        AppModule::class,
+        BaseModule::class,
+        SubcomponentsModule::class,
+    ]
 )
 interface AppComponent {
-	fun booksListComponent(): BooksListComponent.Builder
+    fun booksListComponent(): BooksListComponent.Builder
 }

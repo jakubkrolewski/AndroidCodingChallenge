@@ -9,7 +9,6 @@ import androidx.lifecycle.lifecycleScope
 import com.example.otchallenge.bookslist.R
 import com.example.otchallenge.bookslist.databinding.BooksListFragmentBinding
 import com.example.otchallenge.bookslist.internal.presenter.BooksListPresenter
-import com.example.otchallenge.bookslist.internal.repository.Book
 import com.example.otchallenge.bookslist.internal.ui.BooksAdapter
 import com.example.otchallenge.bookslist.internal.ui.BooksListViewImpl
 import javax.inject.Inject

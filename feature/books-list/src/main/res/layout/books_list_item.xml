@@ -20,6 +20,7 @@
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:contentDescription="@string/books_list_photo_content_description"
+            app:imageUrl='@{book.imageUrl}'
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

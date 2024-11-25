@@ -10,7 +10,7 @@ internal class BooksListViewImpl(
     private val binding: BooksListFragmentBinding,
     private val presenter: BooksListPresenter,
     private val adapter: BooksAdapter,
-): BooksListPresenter.View {
+) : BooksListPresenter.View {
 
     init {
         binding.swipeContainer.setOnRefreshListener { presenter.onEvent(BooksListEvent.Refresh) }
