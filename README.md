@@ -24,3 +24,39 @@ Using this endpoint, show a list of these items, with each row displaying at lea
 
 Bonus Points:
   - Unit tests
+
+# The Solution:
+## Project configuration
+The project was refactored to a multi-module structure that can be used for a big, scalable application.
+Currently it contains the following modules:
+- app - the application module that holds the main Dagger graph, main activity and navigation graph
+- component/base - module that can be shared with other modules that contains base application configuration, e.g. the network layer
+- component/common - reusable general utilities, not coupled to the app business logic
+- feature/books-list - Fragment that contains the books list
+
+Changes in the project Gradle file were done only when necessary to support the new project structure.
+When I create a project setup from scratch, I usually do a lot of things differently, e.g.:
+- configure detekt
+- configure code coverage measurement and enforcement
+- update dependencies version
+- use KSP instead of KAPT
+- use src/main/kotlin and src/test/kotlin directories
+- use Junit5 instead of Junit4
+
+The Gradle files still may contain some code that should be cleaned up, e.g. unused dependencies should be removed and the order of dependencies should be updated (e.g. by sorting the alphabetically).
+The project currently supports only debug build type. The release build type and code obfuscation have not been configured.
+
+## MVP architecture
+The presenter was created from scratch in a very simple way. It has a lifecycle connected to the Fragment lifecycle, so doesn't survive screen rotation.
+It would be possible to make it live on the extended lifecycle scope, e.g. with using the 'https://github.com/konmik/nucleus' library that I used in the past, but it has been deprecated 5 years ago.
+The presenter also currently doesn't support saving the state in a Bundle or SavedStateHandle.
+
+## Libraries
+I have used some additional "AndroidX" libraries, "Kluent" and "Mockito" for testing, "Moshi" for JSON parsing and kotlin coroutines for asynchronous operations. Using coroutines instead of RxJava should be recommended for new projects for better work with Android frameworks (including Compose), support for nullable values in streams and better error handling.
+
+## UI
+A very minimal time was spent on UI. It was designed just to be functional.
+The whole list is loaded at once without pagination support.
+
+## Tests
+Due to the limited time spent on the project, only unit tests were created (but still some tests missing) and no integration tests.
