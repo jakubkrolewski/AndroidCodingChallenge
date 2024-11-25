@@ -5,6 +5,7 @@ import com.example.otchallenge.base.api.di.FragmentScope
 import com.example.otchallenge.bookslist.R
 import com.example.otchallenge.bookslist.internal.repository.Book
 import com.example.otchallenge.bookslist.internal.usecase.GetBooksListUseCase
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -20,10 +21,15 @@ import javax.inject.Inject
 internal typealias BooksListState = ViewModelState<List<Book>>
 
 @FragmentScope
-internal class BooksListPresenter @Inject constructor(
+internal class BooksListPresenter(
     private val lifecycleScope: CoroutineScope,
     private val getBooksListUseCase: GetBooksListUseCase,
+    private val ioDispatcher: CoroutineDispatcher,
 ) {
+
+    @Inject
+    constructor(lifecycleScope: CoroutineScope, getBooksListUseCase: GetBooksListUseCase) :
+            this(lifecycleScope, getBooksListUseCase, Dispatchers.IO)
 
     private var view: View? = null
 
@@ -46,15 +52,15 @@ internal class BooksListPresenter @Inject constructor(
     private fun fetchListOnTrigger() {
         lifecycleScope.launch {
             loadTriggers
-                .flatMapLatest { getEmployeesListState() }
-                .flowOn(Dispatchers.IO)
+                .flatMapLatest { getBooksListState() }
+                .flowOn(ioDispatcher)
                 .collect {
                     state.value = it
                 }
         }
     }
 
-    private fun getEmployeesListState(): Flow<BooksListState> {
+    private fun getBooksListState(): Flow<BooksListState> {
         return fetchDataAsStates(
             newDataProvider = {
                 getBooksListUseCase.execute()

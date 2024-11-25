@@ -8,7 +8,7 @@ interface BooksListComponentProvider {
     fun provideBooksListComponent(): BooksListComponent.Builder
 
     companion object {
-        fun provideFromContext(context: Context): BooksListComponent.Builder =
+        internal fun provideFromContext(context: Context): BooksListComponent.Builder =
             (context.applicationContext as BooksListComponentProvider).provideBooksListComponent()
     }
 }

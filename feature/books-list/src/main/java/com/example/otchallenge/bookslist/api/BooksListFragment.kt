@@ -6,14 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import com.example.otchallenge.bookslist.R
 import com.example.otchallenge.bookslist.databinding.BooksListFragmentBinding
 import com.example.otchallenge.bookslist.internal.presenter.BooksListPresenter
 import com.example.otchallenge.bookslist.internal.ui.BooksAdapter
 import com.example.otchallenge.bookslist.internal.ui.BooksListViewImpl
 import javax.inject.Inject
 
-class BooksListFragment : Fragment(R.layout.books_list_fragment) {
+class BooksListFragment : Fragment() {
 
     @Inject
     internal lateinit var presenter: BooksListPresenter
